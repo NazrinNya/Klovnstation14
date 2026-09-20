@@ -1,5 +1,6 @@
 using Content.Shared._KS14.Packets.BUI;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Utility;
 
 namespace Content.Client._KS14.Packets.UI
@@ -20,10 +21,11 @@ namespace Content.Client._KS14.Packets.UI
             _menu = this.CreateWindow<ExecutorMenu>();
 
             _menu.OnExecutionButton += OnExecute;
-            _menu.OnSaveButton += OnSave;
             _menu.OnLoadButton += OnLoad;
             _menu.OnTerminateButton += OnTerminate;
             _menu.OnSendInputButton += OnSendInput;
+
+            _menu.Input.OnMouseExited += OnInputExit;
         }
 
         protected override void Dispose(bool disposing)
@@ -32,7 +34,7 @@ namespace Content.Client._KS14.Packets.UI
             base.Dispose(disposing);
         }
 
-        private void OnSave()
+        private void OnInputExit(GUIMouseHoverEventArgs args)
         {
             SendMessage(new SaveExecutorCommandMessage(Rope.Collapse(_menu?.Input.TextRope ?? Rope.Leaf.Empty)));
         }
@@ -71,10 +73,12 @@ namespace Content.Client._KS14.Packets.UI
             if (_menu == null)
                 return;
 
-            if (message is not LogExecutorMessage cast)
-                return;
-
-            _menu.WriteLog(cast.Log);
+            switch (message)
+            {
+                case LogExecutorMessage cast:
+                    _menu.WriteLog(cast.Log);
+                    break;
+            }
         }
     }
 }

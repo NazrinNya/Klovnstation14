@@ -13,18 +13,14 @@ namespace Content.Client._KS14.Packets.UI;
 public sealed partial class ExecutorMenu : FancyWindow
 {
     public event Action? OnExecutionButton;
-    public event Action? OnSaveButton;
     public event Action? OnLoadButton;
-
     public event Action? OnTerminateButton;
-
     public event Action? OnSendInputButton;
     public ExecutorMenu()
     {
         RobustXamlLoader.Load(this);
 
         ExecuteButton.OnPressed += _ => OnExecutionButton?.Invoke();
-        SaveButton.OnPressed += _ => OnSaveButton?.Invoke();
         LoadButton.OnPressed += _ => OnLoadButton?.Invoke();
         SendInputButton.OnPressed += _ => OnSendInputButton?.Invoke();
         TerminateButton.OnPressed += _ => OnTerminateButton?.Invoke();

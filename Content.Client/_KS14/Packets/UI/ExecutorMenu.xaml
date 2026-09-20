@@ -10,7 +10,6 @@
                 <gfx:StyleBoxFlat BackgroundColor="#1a1a1a" />
             </PanelContainer.PanelOverride>
             <Button Name="ExecuteButton" SetSize="60, 30" Margin="5 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Text="EXEC"></Button>
-            <Button Name="SaveButton" SetSize="60, 30" Text="SAVE" VerticalAlignment="Top"></Button>
             <Button Name="LoadButton" SetSize="60, 30" Margin="0 0 5 0" HorizontalAlignment="Right" VerticalAlignment="Top" Text="UPDT"></Button>
             <Button Name="TerminateButton" SetSize="60, 30" Text="KILL" Margin="5 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
             <Button Name="SendInputButton" SetSize="60, 30" Text="SEND" Margin="0 0 5 0" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Button>
